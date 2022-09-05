@@ -1,3 +1,9 @@
+# Jovany Melchor
+# ITMS 543 Vulnerability Analysis and Control
+# This script is intended to assess whether a user's password is secure or not.
+# This does require cracklib to be installed on the machine that this script is running on.
+# A python3.7 or newer interpreter should be used
+import subprocess
 print("Hello, please enter a password.")
 x = True
 
@@ -25,4 +31,9 @@ while x:
         continue
     else:
         x = False
+process = subprocess.Popen(["cracklib-check", ], stdin=subprocess.PIPE, stdout=subprocess.PIPE,
+                           stderr=subprocess.PIPE, text=True)
+process.stdin.write(password)
+process.stdin.close()
+print(process.stdout.read())
 print("Password is valid.")

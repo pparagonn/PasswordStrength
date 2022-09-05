@@ -1,19 +1,8 @@
-import re
-import string
-
 print("Hello, please enter a password.")
-password = input(String)
 x = True
 
-def run(password):
-    regex = re.compile('[@_!#$%^&*()<>?/\|}{~:]')
-
-    if (regex.search(password) == None):
-        return True
-    else:
-        return False
-
 while x:
+    password = input()
     if len(password) < 8:
         print("The length of the password needs "
               "to be 8 characters or greater")
@@ -25,18 +14,15 @@ while x:
     elif password.isupper():
         print("Please place a lowercase letter "
               "in your password.")
-    elif not(any(char.isdigit() for char in password)):
+        continue
+    elif not (any(char.isdigit() for char in password)):
         print("Please place a number in your "
               "password.")
-    elif not run:
+        continue
+    elif not (any(not char.isalnum() for char in password)):
         print("Please insert a symbol in "
               "your password.")
-    
-
-
-
-
-
-
-
-
+        continue
+    else:
+        x = False
+print("Password is valid.")
